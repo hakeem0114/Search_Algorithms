@@ -5,6 +5,13 @@ Problem:
 
 */
 
+/*
+Pseudo Code:
+
+*/
+
+//Solution:
+
 // console.log()
 
 /*
