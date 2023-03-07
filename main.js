@@ -66,33 +66,86 @@ Run & half its search area if not found for every search{  //while(leftIndex < r
 
 //Solution
 
-function binarySearch(array, target){
+// function binarySearch(array, target){
     
-        let leftIndex = 0
-        let rightIndex = array.length -1  //4
+//         let leftIndex = 0
+//         let rightIndex = array.length -1  //4
 
 
-    while(leftIndex <= rightIndex){  //Needs to be also = to rightIndex so the while loop can be executed if the leftIndex=rightIndex==>TARGET
-        let middleIndex = Math.floor((leftIndex+rightIndex)/2)
+//     while(leftIndex <= rightIndex){  //Needs to be also = to rightIndex so the while loop can be executed if the leftIndex=rightIndex==>TARGET
+//         let middleIndex = Math.floor((leftIndex+rightIndex)/2)
         
-        if(target == array[middleIndex]){return middleIndex}
-        if(target > array[middleIndex]){
-            leftIndex = middleIndex + 1   //Can't use the middle index since it is already checked in the previous line
-        }
-        else if(target < middleIndex){
-            rightIndex = middleIndex -1  //Can't use the middle index since it is already checked in the previous line
-        }    
-    }
-    return "Target not in array"    //If target is not found after while loop
-}
+//         if(target == array[middleIndex]){return middleIndex}
+//         if(target > array[middleIndex]){
+//             leftIndex = middleIndex + 1   //Can't use the middle index since it is already checked in the previous line
+//         }
+//         else if(target < middleIndex){
+//             rightIndex = middleIndex -1  //Can't use the middle index since it is already checked in the previous line
+//         }    
+//     }
+//     return "Target not in array"    //If target is not found after while loop
+// }
 
-
-
-console.log(binarySearch([-5,2,4,6,10],10))
-console.log(binarySearch([-5,2,4,6,10],6))
-console.log(binarySearch([-5,2,4,6,10],20))
+// console.log(binarySearch([-5,2,4,6,10],10))
+// console.log(binarySearch([-5,2,4,6,10],6))
+// console.log(binarySearch([-5,2,4,6,10],20))
 /*
+
 Big O: O(logn) since we reduce input size by half in each iteration
 
 Space Complexity: O(1) since we are reducing & not adding input in each iteration 
 */
+
+
+
+//#3: Recursive Binary Search 
+/* Recursion needs a base case & smaller solutions*/
+
+
+//Solution
+// function recursiveBinarySearch(array, target){
+
+//     let leftIndex = 0; //1st index = 0
+//     let rightIndex = array.length -1 // index of last element = array.length -1
+
+//     return search(array, target, leftIndex,rightIndex)
+// }
+
+// function search(array, target, leftIndex, rightIndex){
+
+//     if(leftIndex > rightIndex){   //Since the array is sorted, if the target is not in between left & right
+//                                    // targer is not in the array
+//         return "Target not in array"   //Base case to exit
+//     }
+
+
+//     let middleIndex = Math.floor((leftIndex+rightIndex)/2)
+    
+//     if(target < array[middleIndex]){
+//         rightIndex = middleIndex -1
+//         return search(array, target, leftIndex, rightIndex) //Call back function to re-run if left < middleIndex
+//     }else if(target > array[middleIndex]){
+//          leftIndex = middleIndex +1 ;
+//         return search(array, target,leftIndex, rightIndex )
+//     } 
+
+//     if(target == array[middleIndex]){  //If the target is in the array, it always return the middle index of searching through all indexes
+//         return middleIndex;
+//     }
+
+// }
+
+// //Console.log
+// console.log(recursiveBinarySearch([-5,2,4,6,10],10))
+// console.log(recursiveBinarySearch([-5,2,4,6,10],6))
+// console.log(recursiveBinarySearch([-5,2,4,6,10],20))
+
+/*
+Big O: O(logn) since input size is half in each iteration
+
+Space Complexity: O(logn) since memory halves each iteration when each recursion is placed in the stack
+*/
+
+
+
+
